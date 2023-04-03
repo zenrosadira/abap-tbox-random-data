@@ -79,3 +79,6 @@ DATA(val_rand) = ztbox_cl_rand=>value( ).
 val_rand->len( 6 ).
 val_rand->generate( IMPORTING value = order_num ). " It could be any value of the form `0000XXXXXX`.
 ```
+
+## Installation
+Install this project using [abapGit](https://abapgit.org/) ![abapGit](https://docs.abapgit.org/img/favicon.png)
