@@ -1,6 +1,6 @@
 # ABAP Random Data Generator
 
-![image](https://i.ibb.co/gZQ3wBq/random-data-ex.png)
+![image](https://i.ibb.co/4pXVYBs/random-data-ex.png)
 A utility class that simplifies the generation of random data and allows for quick population of variables (tables, structures, scalar data). 
 The data generated is devoid of meaning but respects the constraints of the domain: if fixed values are expected, one of these values will be randomly assigned; if a check table is assigned to the domain, values will be extracted from the check table. Additionally, it is possible to configure ranges and value dimensions. 
 
