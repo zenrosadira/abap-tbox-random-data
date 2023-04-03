@@ -34,13 +34,15 @@ The data generated is devoid of meaning but respects the constraints of the doma
  DATA(tab_rand) = ztbox_cl_rand=>table( ).
 
  tab_rand->rows( `10000` ). " Default is 100
- tab_rand->generate( IMPORTING table = t_sbook ). " Now t_sbook has exactly 10000 rows 
+ tab_rand->generate( IMPORTING table = t_sbook ). 
+ " Now t_sbook has exactly 10000 rows 
  ```
  The number of rows can also be a range in the form `[min, max]`
  
  ```abap
  tab_rand->rows( `[10, 2000]` ).
- tab_rand->generate( IMPORTING table = t_sbook ). " Now t_sbook has a number of rows randomly choosen between 10 and 2000
+ tab_rand->generate( IMPORTING table = t_sbook ). 
+ " Now t_sbook has a number of rows randomly choosen between 10 and 2000
  ```
  You can manage fields configuration using `->field( )` method.
  
@@ -50,7 +52,7 @@ The data generated is devoid of meaning but respects the constraints of the doma
  tab_rand->field( `FLDATE` )->range( `[19990101, 20251231]` ). " As above, also applies to dates and times
  tab_rand->field( `FORCURAM` )->decimals( 2 ). " To set decimals precision for packed/float fields
  tab_rand->field( `PASSNAME` )->len( `5` ). " To assign char-value with fixed length
- tab_rand->field( `PASSNAME` )->len( `[3, 14]` ). " To assign char-value with variable (randomly chosen) length
+ tab_rand->field( `PASSNAME` )->len( `[3, 14]` ). " To assign char-value with a randomly chosen length
  tab_rand->field( `PASSNAME` )->words_upper( ). " To generate words in upper case
  tab_rand->field( `WUNIT` )->use_check_table( abap_false ). " To de-activate the use of domain check-table
  
