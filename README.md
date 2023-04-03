@@ -25,20 +25,25 @@ The data generated is devoid of meaning but respects the constraints of the doma
  ```
  
  ## Configuration
+
+ You can decide the number of rows in the generated table
  
  ```abap
  DATA t_sbook TYPE TABLE OF sbook.
  DATA(tab_rand) = ztbox_cl_rand=>table( ).
- 
- * You can decide the number of rows in the generated table
+
  tab_rand->rows( `10000` ). " Default is 100
- tab_rand->generate( IMPORTING table = t_sflight ). " Now t_sbook has exactly 10000 rows 
+ tab_rand->generate( IMPORTING table = t_sbook ). " Now t_sbook has exactly 10000 rows 
+ ```
+ The number of rows can also be a range in the form `[min, max]`
  
- * The number of rows can also be a range in the form `[min, max]`
+ ```abap
  tab_rand->rows( `[10, 2000]` ).
- tab_rand->generate( IMPORTING table = t_sflight ). " Now t_sbook has a numebr of rows randomly choosen between 10 and 2000
+ tab_rand->generate( IMPORTING table = t_sbook ). " Now t_sbook has a number of rows randomly choosen between 10 and 2000
+ ```
+ You can manage fields configuration using `->field( )` method.
  
- * You can manage fields configuration using field( ) method
+ ```abap
  tab_rand->field( `MANDT` )->fixed( sy-mandt ). " To always assign the same value
  tab_rand->field( `FORCURAM` )->range( `[1, 1000]` ). " To assign value randomly chosen from an interval
  tab_rand->field( `FLDATE` )->range( `[19990101, 20251231]` ). " As above, also applies to dates and times
@@ -49,12 +54,24 @@ The data generated is devoid of meaning but respects the constraints of the doma
  tab_rand->field( `WUNIT` )->use_check_table( abap_false ). " To de-activate the use of domain check-table
  
  tab_rand->generate( IMPORTING table = t_sbook ).
+ ```
+ The same `->field( )` configurations can be applied to structure generator too.
  
- * The same ->field( ) configurations can be applied to structure generator too
+ ```abap
  DATA s_uni TYPE bapimtcs_unicode.
  DATA(str_rand) = ztbox_cl_rand=>struct( ).
- * For string field generation you can set the number of words to generate and the length of each words (fixed or randomly chosen from a range),
+ * For string field generation you can set the number of words to generate and the length of each words 
+ * (for both, fixed or randomly chosen from a range),
  str_rand->field( `DATA` )->words_number( `[1, 15]` )->words_len( `[5, 10]` ). 
  
  str_rand->generate( IMPORTING struct = s_uni ).
  ```
+
+And you can configure the single value too.
+
+```abap
+DATA order_num TYPE n LENGTH 10.
+DATA(val_rand) = ztbox_cl_rand=>value( ).
+val_rand->len( 6 ).
+val_rand->generate( IMPORTING value = order_num ). " It could be any value of the form `0000XXXXXX`.
+```
