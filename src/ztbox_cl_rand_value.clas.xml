@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZTBOX_CL_RAND_VALUE</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>TBOX | Random Value</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>_CHECK_VALUES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table of Strings</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>_DOMAIN_VALUES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table of Strings</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>_ELEM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Runtime Type Services</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>_RANDOMIZER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>INT8 Pseudo-Random Integers</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>_VALUE_DIMENSION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TBOX | Random Data - Value Dimension</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>_WORDS_NUMBER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TBOX | Random Data - Value Dimension</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>DECIMALS</CMPNAME>
+     <SCONAME>R</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TBOX | Random Value</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>FIXED</CMPNAME>
+     <SCONAME>R</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TBOX | Random Value</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>LEN</CMPNAME>
+     <SCONAME>R</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TBOX | Random Value</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>RANGE</CMPNAME>
+     <SCONAME>R</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TBOX | Random Value</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WORDS_LEN</CMPNAME>
+     <SCONAME>R</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TBOX | Random Value</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WORDS_NUMBER</CMPNAME>
+     <SCONAME>R</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TBOX | Random Value</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WORDS_UPPER</CMPNAME>
+     <SCONAME>R</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TBOX | Random Value</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_SET_CHECK_VALUES</CMPNAME>
+     <SCONAME>VALUES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table of Strings</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_SET_DOMAIN_VALUES</CMPNAME>
+     <SCONAME>VALUES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table of Strings</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_SET_ELEMENT</CMPNAME>
+     <SCONAME>ELEM</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Runtime Type Services</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>
