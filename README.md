@@ -53,6 +53,7 @@ The data generated is devoid of meaning but respects the constraints of the doma
  tab_rand->field( `FORCURAM` )->decimals( 2 ). " To set decimals precision for packed/float fields
  tab_rand->field( `PASSNAME` )->len( `5` ). " To assign char-value with fixed length
  tab_rand->field( `PASSNAME` )->len( `[3, 14]` ). " To assign char-value with a randomly chosen length
+ tab_rand->field( `PASSNAME` )->ascii( ). " To genere words using ASCII characters
  tab_rand->field( `PASSNAME` )->words_upper( ). " To generate words in upper case
  tab_rand->field( `WUNIT` )->use_check_table( abap_false ). " To de-activate the use of domain check-table
  
