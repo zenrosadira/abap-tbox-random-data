@@ -43,7 +43,7 @@ The data generated is devoid of meaning but is consistent with types domain: if 
  ```abap
  tab_rand->rows( `[10, 2000]` ).
  tab_rand->generate( IMPORTING table = t_sbook ). 
- " Now t_sbook has a number of rows randomly choosen between 10 and 2000
+ " Now t_sbook has a number of rows randomly chosen between 10 and 2000
  ```
  You can manage fields configuration using `->field( )` method.
  
