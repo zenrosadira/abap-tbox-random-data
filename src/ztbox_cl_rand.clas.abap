@@ -40,11 +40,6 @@ private section.
       !ELEM type ref to CL_ABAP_ELEMDESCR
     returning
       value(R) type STRING_TABLE .
-  class-methods _CREATE_CATALOG
-    importing
-      !STRUCT type ref to CL_ABAP_STRUCTDESCR
-    returning
-      value(R) type TY_CATALOG_T .
 ENDCLASS.
 
 
@@ -96,7 +91,6 @@ CLASS ZTBOX_CL_RAND IMPLEMENTATION.
     DATA(fields)    = ddic_tab->get_ddic_field_list( ).
     DATA(field)     = VALUE #( fields[ domname = ddic-domname keyflag = abap_true ]-fieldname OPTIONAL ).
 
-    CHECK table IS NOT INITIAL.
     CHECK field IS NOT INITIAL.
 
     DATA tab_ref TYPE REF TO data.
@@ -111,25 +105,6 @@ CLASS ZTBOX_CL_RAND IMPLEMENTATION.
 
       ASSIGN COMPONENT field OF STRUCTURE <row> TO FIELD-SYMBOL(<val>).
       APPEND CONV #( <val> ) TO r.
-
-    ENDLOOP.
-
-  ENDMETHOD.
-
-
-  METHOD _create_catalog.
-
-    LOOP AT struct->components INTO DATA(comp).
-
-      DATA(elem)        = CAST cl_abap_elemdescr( struct->get_component_type( comp-name ) ).
-      DATA(randomizer)  = value( ).
-
-      randomizer->_set_element( elem ).
-
-      r = VALUE #( BASE r
-        ( field_name  = comp-name
-          elem_descr  = elem
-          randomizer  = randomizer ) ).
 
     ENDLOOP.
 

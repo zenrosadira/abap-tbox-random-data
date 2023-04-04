@@ -10,7 +10,9 @@ public section.
 
   methods GENERATE
     exporting
-      !STRUCT type ANY .
+      !STRUCT type ANY
+    raising
+      resumable(ZCX_TBOX_RAND) .
   methods FIELD
     importing
       !FIELD_NAME type NAME_FELD
@@ -55,15 +57,23 @@ CLASS ZTBOX_CL_RAND_STRUCT IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD FIELD.
+  METHOD field.
 
-    DELETE _catalog WHERE field_name EQ field_name.
+    DATA(cat) = VALUE #( _catalog[ field_name = field_name ] OPTIONAL ).
 
-    r = ztbox_cl_rand=>value( ).
+    IF cat IS INITIAL.
 
-    APPEND VALUE #(
-      field_name  = field_name
-      randomizer  = r ) TO _catalog.
+      r = ztbox_cl_rand=>value( ).
+
+      APPEND VALUE #(
+        field_name  = field_name
+        randomizer  = r ) TO _catalog.
+
+    ELSE.
+
+      r = cat-randomizer.
+
+    ENDIF.
 
   ENDMETHOD.
 
@@ -71,7 +81,14 @@ CLASS ZTBOX_CL_RAND_STRUCT IMPLEMENTATION.
   METHOD generate.
 
     IF _catalog_set EQ abap_false.
-      _set_catalog( CAST cl_abap_structdescr( cl_abap_typedescr=>describe_by_data( struct ) ) ).
+
+      DATA(data_desc) = cl_abap_typedescr=>describe_by_data( struct ).
+      IF data_desc->kind_elem NE cl_abap_typedescr=>kind_struct.
+        RAISE EXCEPTION TYPE zcx_tbox_rand EXPORTING textid = zcx_tbox_rand=>structure_type_not_supported.
+      ENDIF.
+
+      _set_catalog( CAST cl_abap_structdescr( data_desc ) ).
+
     ENDIF.
 
     LOOP AT _catalog INTO DATA(cat).
@@ -90,7 +107,10 @@ CLASS ZTBOX_CL_RAND_STRUCT IMPLEMENTATION.
 
     LOOP AT struct->components INTO DATA(comp).
 
-      DATA(elem)          = CAST cl_abap_elemdescr( struct->get_component_type( comp-name ) ).
+      DATA(comp_type)     = struct->get_component_type( comp-name ).
+      CHECK comp_type->kind EQ cl_abap_typedescr=>kind_elem.
+
+      DATA(elem)          = CAST cl_abap_elemdescr( comp_type ).
       DATA(check_values)  = ztbox_cl_rand=>_check_values( elem ).
       DATA(domain_values) = ztbox_cl_rand=>_domain_values( elem ).
 

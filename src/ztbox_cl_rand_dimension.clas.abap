@@ -10,7 +10,8 @@ public section.
 protected section.
 private section.
 
-  constants _INT_REGEX type STRING value `\[(\d*(?:.\d*)),(\d*(?:.\d*))]` ##NO_TEXT.
+  constants _DIG_REGEX type STRING value `\d+` ##NO_TEXT.
+  constants _INT_REGEX type STRING value `\[(\d+), (\d+)\]` ##NO_TEXT.
   data _SINGLE type STRING .
   data _MIN type STRING .
   data _MAX type STRING .
@@ -19,7 +20,9 @@ private section.
 
   methods CONSTRUCTOR
     importing
-      !TEXT type STRING .
+      !TEXT type STRING
+    raising
+      resumable(ZCX_TBOX_RAND) .
   methods MIN
     returning
       value(R) type STRING .
@@ -44,29 +47,34 @@ CLASS ZTBOX_CL_RAND_DIMENSION IMPLEMENTATION.
 
   METHOD constructor.
 
-    DATA(matcher) = cl_abap_matcher=>create(
+    DATA(int_matcher) = cl_abap_matcher=>create(
       pattern = _int_regex
-      text    = text ).
+      text    = condense( text ) ).
 
-    CASE matcher->match( ).
+    DATA(dig_matcher) = cl_abap_matcher=>create(
+      pattern = _dig_regex
+      text    = condense( text ) ).
 
-      WHEN abap_true.
+    IF int_matcher->match( ).
 
-        TRY.
+      _min      = condense( int_matcher->get_submatch( 1 ) ).
+      _max      = condense( int_matcher->get_submatch( 2 ) ).
+      _is_range = abap_true.
 
-            _min      = condense( matcher->get_submatch( 1 ) ).
-            _max      = condense( matcher->get_submatch( 2 ) ).
-            _is_range = abap_true.
+      RETURN.
 
-          CATCH cx_sy_matcher.
-        ENDTRY.
+    ENDIF.
 
-      WHEN abap_false.
+    IF dig_matcher->match( ).
 
-        _single     = condense( text ).
-        _is_single  = abap_true.
+      _single     = condense( text ).
+      _is_single  = abap_true.
 
-    ENDCASE.
+      RETURN.
+
+    ENDIF.
+
+    RAISE EXCEPTION TYPE zcx_tbox_rand EXPORTING textid = zcx_tbox_rand=>value_not_supported.
 
   ENDMETHOD.
 

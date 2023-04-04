@@ -11,6 +11,23 @@
     <FIXPT>X</FIXPT>
     <UNICODE>X</UNICODE>
    </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>STRUCT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create a structure randomizer</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TABLE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create a table randomizer</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>VALUE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create a value randomizer</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
    <DESCRIPTIONS_SUB>
     <SEOSUBCOTX>
      <CMPNAME>STRUCT</CMPNAME>
@@ -41,12 +58,6 @@
      <SCONAME>R</SCONAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Proxy Data Element (generated)</DESCRIPT>
-    </SEOSUBCOTX>
-    <SEOSUBCOTX>
-     <CMPNAME>_CREATE_CATALOG</CMPNAME>
-     <SCONAME>STRUCT</SCONAME>
-     <LANGU>E</LANGU>
-     <DESCRIPT>Runtime Type Services</DESCRIPT>
     </SEOSUBCOTX>
     <SEOSUBCOTX>
      <CMPNAME>_DOMAIN_VALUES</CMPNAME>

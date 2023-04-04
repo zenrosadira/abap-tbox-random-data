@@ -20,7 +20,7 @@ CLASS ZTBOX_CL_RAND_APACK IMPLEMENTATION.
 
     zif_apack_manifest~descriptor = VALUE #(
       group_id    = 'ztbox'
-      artifact_id = 'abap-tbox-randon-data'
+      artifact_id = 'abap-tbox-random-data'
       version     = '0.1'
       git_url     = 'https://github.com/zenrosadira/abap-tbox-random-data.git' ).
 
