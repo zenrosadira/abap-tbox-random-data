@@ -65,7 +65,7 @@ The data generated is devoid of meaning but is consistent with types domain: if 
  ```abap
  DATA s_uni TYPE bapimtcs_unicode.
  DATA(str_rand) = ztbox_cl_rand=>struct( ).
- * For string field generation you can set the number of words to generate and the length of each words 
+ * For string field generation you can set the number of words to generate and the length of each word
  * (for both, fixed or randomly chosen from a range),
  str_rand->field( `DATA` )->words_number( `[1, 15]` )->words_len( `[5, 10]` ). 
  
