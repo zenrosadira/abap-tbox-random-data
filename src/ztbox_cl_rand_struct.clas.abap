@@ -83,7 +83,7 @@ CLASS ZTBOX_CL_RAND_STRUCT IMPLEMENTATION.
     IF _catalog_set EQ abap_false.
 
       DATA(data_desc) = cl_abap_typedescr=>describe_by_data( struct ).
-      IF data_desc->kind_elem NE cl_abap_typedescr=>kind_struct.
+      IF data_desc->kind NE cl_abap_typedescr=>kind_struct.
         RAISE EXCEPTION TYPE zcx_tbox_rand EXPORTING textid = zcx_tbox_rand=>structure_type_not_supported.
       ENDIF.
 
